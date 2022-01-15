@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Update the package manager cache
 sudo apt update 
 
@@ -11,5 +13,5 @@ sudo apt install mariadb-server -y
 sudo apt install php libapache2-mod-php php-mysql -y
 
 # Install phpmyadmin
-sudo apt install phpmyadmin
+sudo apt install phpmyadmin -y -n
 
