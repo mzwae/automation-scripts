@@ -55,6 +55,7 @@ alias wsl='cd /mnt/c/wsl'
 alias dbstatus='sudo service mysql status'
 alias dbrestart='sudo service mysql restart'" >> ~/.bashrc
 
+# Update current alais cache
 source ~/.bashrc
 
 # Install php
