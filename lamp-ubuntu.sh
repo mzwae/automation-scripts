@@ -1,6 +1,7 @@
 #!/bin/bash
 read -p "Enter username for your new database: " username
 read -p "Enter password for your new database: " password
+read -p "Enter url for your phpmyadmin console - default is /phpmyadmin: " url
 # Update the package manager cache
 sudo apt update 
 
@@ -67,11 +68,14 @@ echo "Installed php modules succesfully-----****------"
 sudo apt install phpmyadmin -y
 
 echo "Include /etc/phpmyadmin/apache.conf" | sudo tee -a /etc/apache2/apache2.conf
+
+
+# Restart Apache server for changes to take effect
 sudo service apache2 restart
 
 
 
-
+# Add part to automate phpmyadmin package interactive selections
 # phpmyamdin options -> apache2 -> No
 
 
