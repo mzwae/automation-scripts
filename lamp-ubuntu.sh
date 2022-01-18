@@ -73,9 +73,9 @@ echo "Include /etc/phpmyadmin/apache.conf" | sudo tee -a /etc/apache2/apache2.co
 sudo sed -i "s|Alias /phpmyadmin|Alias /$url|" /etc/phpmyadmin/apache.conf
 
 
-# Restart Apache server for changes to take effect
+# Restart Apache server and db server for changes to take effect
 sudo service apache2 restart
-
+sudo service mysql restart
 
 
 # Add part to automate phpmyadmin package interactive selections
