@@ -1,7 +1,7 @@
 #!/bin/bash
 read -p "Enter username for your new database: " username
 read -p "Enter password for your new database: " password
-read -p "Enter url for your phpmyadmin console - default is /phpmyadmin: " url
+read -p "Enter a path name for your phpmyadmin console page - default is phpmyadmin: " url
 # Update the package manager cache
 sudo apt update 
 
@@ -68,6 +68,9 @@ echo "Installed php modules succesfully-----****------"
 sudo apt install phpmyadmin -y
 
 echo "Include /etc/phpmyadmin/apache.conf" | sudo tee -a /etc/apache2/apache2.conf
+
+# Disguise phpmyadmin console page url to annoy hackers
+sudo sed -i "s|Alias /phpmyadmin|Alias /$url|" /etc/phpmyadmin/apache.conf
 
 
 # Restart Apache server for changes to take effect
