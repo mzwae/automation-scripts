@@ -62,6 +62,9 @@ source ~/.bashrc
 # Install php
 sudo apt install php libapache2-mod-php php-mysql -y
 
+# Install Certbot for SSL/TLS certificates
+sudo apt install certbot python3-certbot-apache -y
+
 echo "Installed php modules succesfully-----****------"
 
 # Install phpmyadmin
