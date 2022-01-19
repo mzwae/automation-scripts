@@ -1,7 +1,7 @@
 #!/bin/bash
-read -p "Enter username for your new database: " username
-read -p "Enter password for your new database: " password
-read -p "Enter a path name for your phpmyadmin console page - default is phpmyadmin: " url
+read -p "Enter username for your new database: " -e -i 'root' username
+read -p "Enter password for your new database: " -e -i 'root' password
+read -p "Enter a path name for your phpmyadmin console page " -e -i 'phpmyadmin' url
 # Update the package manager cache
 sudo apt update 
 
