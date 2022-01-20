@@ -22,3 +22,13 @@ echo "<VirtualHost *:80>
         CustomLog ${APACHE_LOG_DIR}/access.log combined
 
 </VirtualHost> " | sudo tee  /etc/apache2/sites-available/"$sitename"
+
+
+# Disable default site
+sudo a2dissite 000-default.conf
+
+# enable new site to be able to deploy it
+sudo a2ensite $sitename
+
+# Restart server for changes to take effect
+sudo service apache2 restart
