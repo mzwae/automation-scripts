@@ -54,10 +54,10 @@ alias a2status='sudo service apache2 status'
 alias a2stop='sudo service apache2 stop'
 alias wsl='cd /mnt/c/wsl'
 alias dbstatus='sudo service mysql status'
+alias dbstop='sudo service mysql stop'
 alias dbrestart='sudo service mysql restart'" >> ~/.bashrc
 
-# Update current alais cache
-source ~/.bashrc
+
 
 # Install php
 sudo apt install php libapache2-mod-php php-mysql -y
@@ -80,6 +80,9 @@ sudo sed -i "s|Alias /phpmyadmin|Alias /$url|" /etc/phpmyadmin/apache.conf
 sudo service apache2 restart
 sudo service mysql restart
 
+# Update current alais cache manually after script has finished running
+# cd
+# source .bashrc
 
 # Add part to automate phpmyadmin package interactive selections
 # phpmyamdin options -> apache2 -> No
