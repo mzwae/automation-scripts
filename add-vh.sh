@@ -1,6 +1,6 @@
 #!/bin/bash
 read -p "Enter your site name. " -e -i 'mysite.com.conf' sitename
-read -p "Enter your site directory name. It should be saved in /var/www: " -e -i 'mysite'  directory
+read -p "Enter your site directory name. It should be saved in /var/www before you run this script: " -e -i 'mysite'  directory
 read -p "Enter your site domain name.  " -e -i 'mysite.com' domain
 read -p "Enter site admin email.  " -e -i 'webmaster@localhost' email
 
