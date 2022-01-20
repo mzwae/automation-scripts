@@ -6,6 +6,8 @@ read -p "Enter site admin email.  " -e -i 'webmaster@localhost' email
 
 #touch | sudo tee /etc/apache2/sites-available/"$sitename"
 
+sudo chown -R www-data:www-data /var/www/$directory
+
 echo "<VirtualHost *:80>
 
 
