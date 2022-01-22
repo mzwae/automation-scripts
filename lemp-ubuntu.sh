@@ -28,10 +28,14 @@ CREATE USER '$username'@'localhost' IDENTIFIED BY '$password';
 GRANT ALL PRIVILEGES ON *.* TO '$username'@'localhost';
 FLUSH PRIVILEGES;
 
-//TODO: Delete defulat root user to prevent brute force attack
 dbscript
 
 echo "Created db user and password succesfully-----****------"
+
+//TODO: Delete defulat root user to prevent brute force attack
+
+
+
 
 
 # Add useful mariadb and apache aliases
@@ -73,6 +77,11 @@ sudo service mysql restart
 
 # For nginx server to be able to serve php files
 sudo service php7.4-fpm start
+
+
+echo "Secure your database by answering yes to all and choosing a root password."
+
+mysql_secure_installation
 
 # Update current alais cache manually after script has finished running
 # cd
