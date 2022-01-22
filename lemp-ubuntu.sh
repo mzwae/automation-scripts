@@ -2,6 +2,7 @@
 read -p "Enter username for your new database: " -e -i 'root' username
 read -p "Enter password for your new database: " -e -i 'root' password
 read -p "Enter a path name for your phpmyadmin console page " -e -i 'phpmyadmin' url
+read -p "Enter the name of your site directory. It must be saved in /var/www/ " -e -i 'mysite' directory
 
 //TODO: Add option to ask to download wordpress
 
@@ -57,12 +58,12 @@ echo "Installed php modules succesfully-----****------"
 # Install phpmyadmin
 sudo apt install phpmyadmin -y
 
-//TODO: Change phpmyadmin default url accordingly with user input.
-sudo ln -s /usr/share/phpmyadmin /var/www/html/phpmyadmin
 
 #echo "Include /etc/phpmyadmin/apache.conf" | sudo tee -a /etc/apache2/apache2.conf
 
-# Disguise phpmyadmin console page url to annoy hackers
+# Disguise phpmyadmin console page url to prevent brute force attacks
+sudo ln -s /usr/share/phpmyadmin /var/www/$directory/$url
+
 # sudo sed -i "s|Alias /phpmyadmin|Alias /$url|" /etc/phpmyadmin/apache.conf
 
 
@@ -71,7 +72,7 @@ sudo service nginx restart
 sudo service mysql restart
 
 # For nginx server to be able to serve php files
-sudo service php7.4-fpm restart
+sudo service php7.4-fpm start
 
 # Update current alais cache manually after script has finished running
 # cd
