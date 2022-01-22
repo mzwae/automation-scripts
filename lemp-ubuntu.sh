@@ -1,6 +1,6 @@
 #!/bin/bash
-read -p "Enter username for your new database: " -e -i 'root' username
-read -p "Enter password for your new database: " -e -i 'root' password
+read -p "Enter username for your new database: " -e -i 'admin' username
+read -p "Enter password for your new database: " -e -i 'admin' password
 read -p "Enter a path name for your phpmyadmin console page " -e -i 'phpmyadmin' url
 read -p "Enter the name of your site directory. It must be saved in /var/www/ " -e -i 'mysite' directory
 
