@@ -32,8 +32,6 @@ dbscript
 
 echo "Created db user and password succesfully-----****------"
 
-//TODO: Delete defulat root user to prevent brute force attack
-
 # Disabling Root Login through phpmyadmin for more security to prevent brute force attacks
 # Install password generator to set a value for belowfish_secret
 # sudo apt install pwgen
@@ -74,6 +72,8 @@ alias wsl='cd /mnt/c/wsl'
 alias dbstatus='sudo service mysql status'
 alias dbstop='sudo service mysql stop'
 alias dbstart='sudo service mysql start'
+alias restartall='sudo service mysql restart; sudo service php7.4-fpm restart; sudo service nginx restart'
+alias startall='sudo service mysql start; sudo service php7.4-fpm start; sudo service nginx start'
 alias dbrestart='sudo service mysql restart'" >> ~/.bashrc
 
 source ./bashrc
@@ -91,11 +91,19 @@ echo "Installed php modules succesfully-----****------"
 # Install phpmyadmin
 sudo apt install phpmyadmin -y
 
+# Download and Install Wordpress
+cd /var/www/html
+sudo wget https://wordpress.org/latest.tar.gz
+sudo tar -zxvf latest.tar.gz
+
+cd /var/www
+sudo chown -R www-data:www-data html
+sudo chmod 755 -R html
 
 #echo "Include /etc/phpmyadmin/apache.conf" | sudo tee -a /etc/apache2/apache2.conf
 
 # Disguise phpmyadmin console page url to prevent brute force attacks
-sudo ln -s /usr/share/phpmyadmin /var/www/$directory/$url
+sudo ln -s /usr/share/phpmyadmin /var/www/html/$url
 
 # sudo sed -i "s|Alias /phpmyadmin|Alias /$url|" /etc/phpmyadmin/apache.conf
 
