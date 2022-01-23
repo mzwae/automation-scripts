@@ -4,7 +4,7 @@ read -p "Enter password for your new database: " -e -i 'admin' password
 read -p "Enter a path name for your phpmyadmin console page " -e -i 'phpmyadmin' url
 read -p "Enter the name of your site directory. It must be saved in /var/www/ " -e -i 'mysite' directory
 
-//TODO: Add option to ask to download wordpress
+
 
 
 # Update the package manager cache
@@ -108,9 +108,9 @@ sudo service mysql restart
 sudo service php7.4-fpm start
 
 
-echo "Secure your database by answering yes to all and choosing a root password."
+# echo "Secure your database by answering yes to all and choosing a root password."
 
-mysql_secure_installation
+# mysql_secure_installation
 
 # Update current alais cache manually after script has finished running
 # cd
