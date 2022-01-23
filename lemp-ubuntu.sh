@@ -100,6 +100,62 @@ cd /var/www
 sudo chown -R www-data:www-data html
 sudo chmod 755 -R html
 
+
+# Configure Virtual Host for Wordpress site
+
+echo '
+
+# cd /etc/nginx/sites-available
+# cat wordpress.conf
+server {
+            listen 80;
+            root /var/www/html/wordpress;
+            index index.php index.html;
+            server_name mywordpress.local;
+
+	    access_log /var/log/nginx/wordpress.access.log;
+    	    error_log /var/log/nginx/wordpress.error.log;
+
+            location / {
+                         try_files $uri $uri/ =404;
+            }
+
+            location ~ \.php$ {
+                         include snippets/fastcgi-php.conf;
+                         fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+            }
+            
+            location ~ /\.ht {
+                         deny all;
+            }
+
+            location = /favicon.ico {
+                         log_not_found off;
+                         access_log off;
+            }
+
+            location = /robots.txt {
+                         allow all;
+                         log_not_found off;
+                         access_log off;
+           }
+       
+            location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+                         expires max;
+                         log_not_found off;
+           }
+}
+
+
+' | sudo tee /etc/nginx/sites-available/wordpress.conf
+
+
+# Enable new wordpress site
+
+cd /etc/nginx/sites-enabled
+sudo ln -s ../sites-available/wordpress.conf .
+
+
 #echo "Include /etc/phpmyadmin/apache.conf" | sudo tee -a /etc/apache2/apache2.conf
 
 # Disguise phpmyadmin console page url to prevent brute force attacks
@@ -115,7 +171,14 @@ sudo service mysql restart
 # For nginx server to be able to serve php files
 sudo service php7.4-fpm start
 
+# Check the correctness of above configuration file only:
+sudo nginx -t
 
+# Check cofiguration and dump configuration files
+sudo nginx -T
+
+# Start tracking server error log
+sudo tail -f /var/log/nginx/error.log
 # echo "Secure your database by answering yes to all and choosing a root password."
 
 # mysql_secure_installation
