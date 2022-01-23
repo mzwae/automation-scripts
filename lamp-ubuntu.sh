@@ -55,6 +55,10 @@ alias a2stop='sudo service apache2 stop'
 alias wsl='cd /mnt/c/wsl'
 alias dbstatus='sudo service mysql status'
 alias dbstop='sudo service mysql stop'
+alias restartall='sudo service mysql restart; sudo service apache2 restart'
+alias startall='sudo service mysql start; sudo service apache2 start'
+alias stopall='sudo service mysql stop; sudo service apache2 stop'
+alias statusall='sudo service mysql status; sudo service apache2 status'
 alias dbrestart='sudo service mysql restart'" >> ~/.bashrc
 
 
