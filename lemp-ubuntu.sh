@@ -35,6 +35,10 @@ echo "Created db user and password succesfully-----****------"
 //TODO: Delete defulat root user to prevent brute force attack
 
 # Disabling Root Login through phpmyadmin for more security to prevent brute force attacks
+# Install password generator to set a value for belowfish_secret
+# sudo apt install pwgen
+# Generate a single -1 random string with a length of 32 characters
+#  pwgen -s 32 1
 echo '
 <?php
 
@@ -59,12 +63,20 @@ echo '
 
 
 echo "alias nrestart='sudo service nginx restart'
+alias nstart='sudo service nginx start'
 alias nstatus='sudo service nginx status'
 alias nstop='sudo service nginx stop'
+alias pstart='sudo service php7.4-fpm start'
+alias pstatus='sudo service php7.4-fpm status'
+alias pstop='sudo service php7.4-fpm stop'
+alias prestart='sudo service php7.4-fpm restart'
 alias wsl='cd /mnt/c/wsl'
 alias dbstatus='sudo service mysql status'
 alias dbstop='sudo service mysql stop'
+alias dbstart='sudo service mysql start'
 alias dbrestart='sudo service mysql restart'" >> ~/.bashrc
+
+source ./bashrc
 
 
 
