@@ -103,13 +103,14 @@ echo '
 
 
 # Download and Install Wordpress
-cd /var/www/html
+cd /var/www
 sudo wget https://wordpress.org/latest.tar.gz
 sudo tar -zxvf latest.tar.gz
+sudo rm latest.tar.gz
 
 cd /var/www
-sudo chown -R www-data:www-data html
-sudo chmod 755 -R html
+sudo chown -R www-data:www-data wordpress
+sudo chmod 755 -R wordpress
 
 # Restart Apache server and db server for changes to take effect
 sudo service apache2 restart
