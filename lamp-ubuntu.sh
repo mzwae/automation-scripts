@@ -116,6 +116,12 @@ sudo chmod 755 -R wordpress
 sudo service apache2 restart
 sudo service mysql restart
 
+# Check apache2 server configuration
+sudo apache2 -t
+
+# Follow the server error log
+sudo tail -f /var/log/apache2/error.log
+
 # Update current alais cache manually after script has finished running
 # cd
 # source .bashrc
