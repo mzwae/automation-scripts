@@ -101,6 +101,16 @@ echo '
 
 ' | sudo tee -a /etc/phpmyadmin/conf.d/pma_secure.php
 
+
+# Download and Install Wordpress
+cd /var/www/html
+sudo wget https://wordpress.org/latest.tar.gz
+sudo tar -zxvf latest.tar.gz
+
+cd /var/www
+sudo chown -R www-data:www-data html
+sudo chmod 755 -R html
+
 # Restart Apache server and db server for changes to take effect
 sudo service apache2 restart
 sudo service mysql restart
