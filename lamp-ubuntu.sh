@@ -45,7 +45,28 @@ dbscript
 
 echo "Created db user and password succesfully-----****------"
 
+# Disabling Root Login through phpmyadmin for more security to prevent brute force attacks
+# Install password generator to set a value for belowfish_secret
+# sudo apt install pwgen
+# Generate a single -1 random string with a length of 32 characters
+#  pwgen -s 32 1
+echo '
+<?php
 
+    # PhpMyAdmin Settings
+    # This should be set to a random string of at least 32 chars
+    $cfg['blowfish_secret'] = "Ab59C4mkdrUkO2HljvBf6i1iwo43Ujvd";
+
+    $i=0;
+    $i++;
+
+    $cfg['Servers'][$i]['auth_type'] = 'cookie';
+    $cfg['Servers'][$i]['AllowNoPassword'] = false;
+    $cfg['Servers'][$i]['AllowRoot'] = false;
+
+?>
+
+' | sudo tee -a /etc/phpmyadmin/conf.d/pma_secure.php
 # Add useful mariadb and apache aliases
 
 
