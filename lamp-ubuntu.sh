@@ -2,6 +2,11 @@
 read -p "Enter username for your new database: " -e -i 'root' username
 read -p "Enter password for your new database: " -e -i 'root' password
 read -p "Enter a path name for your phpmyadmin console page " -e -i 'phpmyadmin' url
+
+
+# Reboot automatically after 20 seconds if kernel panic occurs
+echo "kernel.panic = 20" | sudo tee -a /etc/sysctl.conf 
+
 # Update the package manager cache
 sudo apt update 
 
@@ -58,6 +63,8 @@ alias restartall='sudo service mysql restart; sudo service apache2 restart'
 alias startall='sudo service mysql start; sudo service apache2 start'
 alias stopall='sudo service mysql stop; sudo service apache2 stop'
 alias statusall='sudo service mysql status; sudo service apache2 status'
+alias sslrenew='sudo certbot renew --force-renewal'
+alias sslshow='sudo certbot certificates'
 alias dbrestart='sudo service mysql restart'" >> ~/.bashrc
 
 
