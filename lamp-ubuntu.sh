@@ -7,6 +7,9 @@ read -p "Enter a path name for your phpmyadmin console page " -e -i 'phpmyadmin'
 # Reboot automatically after 20 seconds if kernel panic occurs
 echo "kernel.panic = 20" | sudo tee -a /etc/sysctl.conf 
 
+# Rereads configuration without rebooting
+sysctl -p
+
 # Update the package manager cache
 sudo apt update 
 
