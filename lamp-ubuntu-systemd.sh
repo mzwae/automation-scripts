@@ -112,6 +112,11 @@ cd /var/www
 sudo chown -R www-data:www-data wordpress
 sudo chmod 755 -R wordpress
 
+//todo # Solve apache bug AH00111: Config variable ${APACHE_RUN_DIR} is not defined
+sudo su -
+source /etc/apache2/envvars
+exit
+
 # Restart Apache server and db server for changes to take effect
 sudo systemctl restart apache2
 sudo systemctl restart mysql
