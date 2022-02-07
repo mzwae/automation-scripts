@@ -7,8 +7,10 @@ cd /var/www
 # sudo tar -zxvf moodle-latest-24.tgz
 # sudo rm moodle-latest-24.tgz
 
-# cd /var/www
-# sudo chown -R www-data:www-data moodle
-# sudo chmod 755 -R moodle
+sudo mkdir moodledata
 
-git clone git@github.com:moodle/moodle.git
+sudo git clone git@github.com:moodle/moodle.git
+
+# cd /var/www
+sudo chown -R www-data:www-data moodle moodledata
+sudo chmod 755 -R moodle moodledata
