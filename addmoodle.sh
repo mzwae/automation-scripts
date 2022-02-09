@@ -1,5 +1,8 @@
 # This script is to automate downloading moodle and setting up virtual host to Apache Linux server
 
+# Install required php modules
+sudo apt install php-intl php-xmlrpc php-soap -y
+
 cd /var/www
 
 sudo mkdir moodledata
