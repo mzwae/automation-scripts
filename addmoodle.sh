@@ -7,6 +7,10 @@ cd /var/www
 
 sudo mkdir moodledata
 
-sudo git clone git@github.com:moodle/moodle.git
+# sudo git clone git@github.com:moodle/moodle.git
+
+# sudo git clone --branch MOODLE_311_STABLE --single-branch git@github.com:moodle/moodle.git
+
+sudo git clone --branch MOODLE_311_STABLE --single-branch https://github.com/moodle/moodle.git
 
 sudo chown -R www-data:www-data moodle moodledata
